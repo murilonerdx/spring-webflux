@@ -41,6 +41,13 @@ public class ReactiveMathController {
         return this.reactiveMathService.multiply(multiplyRequestDTO);
     }
 
+    @GetMapping("square/{input}/throw")
+    public Mono<ResponseDTO> findSquareThrow(@PathVariable int input){
+        if(input < 10 || input > 20)
+            throw new InputValidationException(input);
+        return this.reactiveMathService.findSquare(input);
+    }
+
     @GetMapping("square/{input}/mono-error")
     public Mono<ResponseDTO> findSquareMonoError(@PathVariable int input){
         return Mono.just(input)

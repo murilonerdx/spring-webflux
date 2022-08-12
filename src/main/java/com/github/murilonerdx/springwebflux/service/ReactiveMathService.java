@@ -17,13 +17,12 @@ public class ReactiveMathService {
 
     public Mono<ResponseDTO> findSquare(int input) {
         validationInputCause(input);
-
         return Mono.fromSupplier(() -> input * input)
                 .map(ResponseDTO::new);
     }
 
     public Flux<ResponseDTO> multiplicationTable(int input) {
-        validationInputCause(input);
+//        validationInputCause(input);
 
         return Flux.range(1, 10)
 //                .doOnNext(i -> SleepUtil.sleepSeconds(1))
